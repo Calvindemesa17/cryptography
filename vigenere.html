@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=[device-width], initial-scale=1.0" />
+    <title>Calvin'S website</title>
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
+    ></script>
+  </head>
+
+  <a>
+    <!------ HEADER ------->
+
+    <section class="subu-header">
+      <nav>
+        <a href="index.html"><img src="images/logo0.png" alt="logo" /></a>
+        <div class="nav-links" id="nav-links">
+          <i class="nav-icons fa fa-times" onclick="hideMenu()"></i>
+
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="Playfair.html">PLAYFAIR</a></li>
+            <li><a href="vigenere.html">VIGENERE</a></li> 
+            <li><a href="Caesar.html">CAESAR</a></li>
+            <li><a href="onetime.html">ONE TIME PAD</a></li>
+          </ul>
+        </div>
+        <i class="nav-icons fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <h1>VIGENERE CIPHER</h1>
+    </section>
+      
+<!------- facilities --------->
+
+   <section class="facilities">
+    
+  </section>
+  <title>Vigenère Cipher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+  }
+  .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 2px;
+    }
+
+  label {
+      font-weight: bold;
+  }
+  input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  }
+  button {
+      padding: 10px 20px;
+      background-color: skyblue;
+      color: black;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    
+  }
+
+  button:hover {
+      background-color: blue;
+  }
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Vigenère Cipher</h2>
+  <label for="plaintext">Enter Plain Text:</label>
+  <input type="text" id="plaintext">
+  <label for="key">Enter Key:</label>
+  <input type="text" id="key">
+  <button onclick="encrypt()">Encrypt</button>
+  <button onclick="decrypt()">Decrypt</button>
+  <label for="ciphertext">Result:</label>
+  <textarea id="ciphertext" rows="5" readonly></textarea>
+</div>
+
+<script>
+  function encrypt() {
+      var plaintext = document.getElementById("plaintext").value.toUpperCase();
+      var key = document.getElementById("key").value.toUpperCase();
+      var ciphertext = "";
+      for (var i = 0, j = 0; i < plaintext.length; i++) {
+          var charCode = plaintext.charCodeAt(i);
+          if (charCode >= 65 && charCode <= 90) {
+              ciphertext += String.fromCharCode((charCode - 65 + (key.charCodeAt(j % key.length) - 65)) % 26 + 65);
+              j++;
+          } else {
+              ciphertext += plaintext.charAt(i);
+          }
+      }
+      document.getElementById("ciphertext").value = ciphertext;
+  }
+
+  function decrypt() {
+      var ciphertext = document.getElementById("ciphertext").value.toUpperCase();
+      var key = document.getElementById("key").value.toUpperCase();
+      var plaintext = "";
+      for (var i = 0, j = 0; i < ciphertext.length; i++) {
+          var charCode = ciphertext.charCodeAt(i);
+          if (charCode >= 65 && charCode <= 90) {
+              plaintext += String.fromCharCode((charCode - 65 - (key.charCodeAt(j % key.length) - 65) + 26) % 26 + 65);
+              j++;
+          } else {
+              plaintext += ciphertext.charAt(i);
+          }
+      }
+      document.getElementById("plaintext").value = plaintext;
+  }
+</script>
+</body>
+
+  </section>
+
+
+    <!-----FOOTER----->
+    <a class="footer">
+      <h4>Vigenère Cipher</h4>
+      <p>
+        Vigenere cipher is a type of substitution cipher used for data encryption in which the original plaintext structure is somewhat concealed in the ciphertext by using several different monoalphabetic substitution ciphers rather than just one. 
+      </p>
+      <div class="icons">
+        <i class="icons-items fab fa-facebook-f"></i>
+        <i class="icons-items fab fa-twitter"></i>
+        <i class="icons-items fab fa-instagram"></i>
+        <i class="icons-items fab fa-telegram"></i>
+      </div>
+      
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>
